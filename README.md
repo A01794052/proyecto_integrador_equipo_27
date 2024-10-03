@@ -1,6 +1,6 @@
 # Predicción de Código HTS de 6 Dígitos a partir de Lenguaje Natural
 
-Este proyecto tiene como objetivo predecir un código HTS (Harmonized Tariff Schedule) de 6 dígitos basándose en una entrada de lenguaje natural proporcionada por el usuario. Esto facilita la clasificación de productos en el comercio internacional.
+Este proyecto tiene como objetivo predecir un código HTS (Harmonized Tariff Schedule) de 6 dígitos basándose en una entrada de lenguaje natural proporcionada por el usuario, por ejemplo "Dame el codigo para importar un Play Station 5". Esto facilita la clasificación de productos en el comercio internacional.
 
 ## Tabla de Contenidos
 
