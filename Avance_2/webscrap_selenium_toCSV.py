@@ -11,10 +11,26 @@ chrome_options = Options()
 chrome_options.add_argument("--headless")
 
 # Path to your chromedriver
-service = Service(executable_path='chromedriver.exe')
-
+#service = Service(executable_path='chromedriver.exe')
 # Initialize WebDriver
-driver = webdriver.Chrome(service=service, options=chrome_options)
+#driver = webdriver.Chrome(service=service, options=chrome_options)
+
+#Best method
+# Configurar las opciones del navegador
+options = webdriver.ChromeOptions()
+prefs = {
+    'download.prompt_for_download': False,
+    'download.directory_upgrade': True,
+    'plugins.always_open_pdf_externally': True,
+    'plugins.plugins_disabled': ['Chrome PDF Viewer'],
+    'profile.default_content_setting_values.automatic_downloads': 1,
+    'profile.default_content_settings.popups': 0,
+}
+options.add_experimental_option('prefs', prefs)
+
+# Inicializar el WebDriver (en este caso, Chrome)
+driver = webdriver.Chrome(options=options)
+
 
 # Define the base URL
 base_url = "https://www.dripcapital.com/hts-code/"
