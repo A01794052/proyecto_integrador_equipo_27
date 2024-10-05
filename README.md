@@ -1,6 +1,6 @@
 # Predicción de Código HTS de 6 Dígitos a partir de Lenguaje Natural
 
-Este proyecto tiene como objetivo predecir un código HTS (Harmonized Tariff Schedule) de 6 dígitos basándose en una entrada de lenguaje natural proporcionada por el usuario, por ejemplo "Dame el codigo para importar un Play Station 5". Esto facilita la clasificación de productos en el comercio internacional.
+Este proyecto tiene como objetivo predecir un código HTS (Harmonized Tariff Schedule) de 6 dígitos basándose en una entrada de lenguaje natural proporcionada por el usuario. Esto facilita la clasificación de productos en el comercio internacional.
 
 ## Tabla de Contenidos
 
@@ -13,6 +13,9 @@ Este proyecto tiene como objetivo predecir un código HTS (Harmonized Tariff Sch
     - [a. Verificar la Versión de Google Chrome](#a-verificar-la-versión-de-google-chrome)
     - [b. Descargar ChromeDriver](#b-descargar-chromedriver)
     - [c. Configurar ChromeDriver](#c-configurar-chromedriver)
+  - [5. Instalar CUDA 11.6](#5-instalar-cuda-116)
+    - [a. Instalar PyTorch con Soporte CUDA](#a-instalar-pytorch-con-soporte-cuda)
+    - [b. Verificar la Instalación de PyTorch y CUDA](#b-verificar-la-instalación-de-pytorch-y-cuda)
 - [Contribuciones](#contribuciones)
 - [Licencia](#licencia)
 
@@ -21,6 +24,7 @@ Este proyecto tiene como objetivo predecir un código HTS (Harmonized Tariff Sch
 - **Python 3.x** instalado en su sistema.
 - **Google Chrome** instalado.
 - **Ollama** y el modelo **Llama 3** instalados. (Ver sección de instalación)
+- **CUDA 11.6** instalado si utiliza una GPU NVIDIA compatible.
 
 ## Instalación
 
@@ -123,13 +127,128 @@ Visite el sitio oficial de descargas de ChromeDriver:
 
 - **En macOS/Linux:**
   1. Mueva `chromedriver` a `/usr/local/bin/`:
+
      ```bash
      sudo mv chromedriver /usr/local/bin/
      ```
+
   2. Asegúrese de que el archivo sea ejecutable:
+
      ```bash
      sudo chmod +x /usr/local/bin/chromedriver
      ```
+
+### 5. Instalar CUDA 11.6
+
+Si su sistema cuenta con una GPU NVIDIA compatible, puede instalar CUDA 11.6 para acelerar el procesamiento.
+
+#### a. Verificar Compatibilidad
+
+Asegúrese de que su GPU NVIDIA sea compatible con CUDA 11.6. Puede consultar la lista de GPUs compatibles en el sitio oficial de NVIDIA.
+
+#### b. Descargar CUDA 11.6
+
+Visite el siguiente enlace para descargar CUDA 11.6:
+
+[Descargar CUDA 11.6](https://developer.nvidia.com/cuda-11-6-2-download-archive?target_os=Windows&target_arch=x86_64&target_version=11&target_type=exe_local)
+
+Seleccione las opciones que correspondan a su sistema operativo:
+
+- **Sistema Operativo:** Windows / Linux
+- **Arquitectura:** x86_64
+- **Versión:** 11.6
+- **Tipo de Instalador:** Local
+
+#### c. Instalar CUDA 11.6
+
+**En Windows:**
+
+1. Ejecute el instalador descargado (`cuda_11.6.*_win10.exe`).
+2. Siga las instrucciones en pantalla.
+   - Seleccione "Custom (Advanced)" si desea personalizar la instalación.
+   - Asegúrese de instalar los componentes necesarios como los controladores, herramientas de desarrollo y bibliotecas.
+3. Reinicie el sistema si se le solicita.
+
+**En Linux:**
+
+1. Otorgue permisos de ejecución al instalador:
+
+   ```bash
+   chmod +x cuda_11.6.*_linux.run
+   ```
+
+2. Ejecute el instalador:
+
+   ```bash
+   sudo ./cuda_11.6.*_linux.run
+   ```
+
+3. Siga las instrucciones en pantalla.
+   - Acepte los términos y condiciones.
+   - Seleccione los componentes que desea instalar.
+4. Configure las variables de entorno agregando las siguientes líneas al final de su archivo `~/.bashrc` o `~/.bash_profile`:
+
+   ```bash
+   export PATH=/usr/local/cuda-11.6/bin:$PATH
+   export LD_LIBRARY_PATH=/usr/local/cuda-11.6/lib64:$LD_LIBRARY_PATH
+   ```
+
+5. Actualice el entorno:
+
+   ```bash
+   source ~/.bashrc
+   ```
+
+#### d. Verificar la Instalación
+
+Para verificar que CUDA se instaló correctamente, ejecute en la terminal:
+
+```bash
+nvcc --version
+```
+
+Debería mostrar información sobre la versión de CUDA instalada.
+
+#### a. Instalar PyTorch con Soporte CUDA
+
+Después de instalar CUDA, es necesario instalar PyTorch con soporte para CUDA. Ejecute el siguiente comando:
+
+```bash
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu117
+```
+
+**Nota:** Aunque hemos instalado CUDA 11.6, el índice `cu117` corresponde a CUDA 11.7. Asegúrese de que la versión de PyTorch sea compatible con su versión de CUDA. Si necesita instalar una versión específica para CUDA 11.6, puede consultar las instrucciones en la [página de instalación de PyTorch](https://pytorch.org/get-started/locally/).
+
+#### b. Verificar la Instalación de PyTorch y CUDA
+
+Para comprobar que PyTorch reconoce su GPU y que está utilizando CUDA correctamente, puede ejecutar el siguiente script:
+
+```python
+import torch
+import torch.nn as nn
+
+# Check if CUDA is available
+print(f"CUDA Available: {torch.cuda.is_available()}")
+
+# Print CUDA device name
+if torch.cuda.is_available():
+    print(f"Device Name: {torch.cuda.get_device_name(0)}")
+```
+
+Guarde este código en un archivo llamado `check_cuda.py` y ejecútelo:
+
+```bash
+python check_cuda.py
+```
+
+Debería obtener una salida similar a:
+
+```
+CUDA Available: True
+Device Name: NVIDIA GeForce GTX 1080
+```
+
+Si `CUDA Available` es `True`, significa que PyTorch está configurado correctamente para utilizar CUDA.
 
 ## Contribuciones
 
