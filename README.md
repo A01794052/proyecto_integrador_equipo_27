@@ -46,11 +46,7 @@ El sistema RAG consta de dos componentes principales:
   - [1. Clonar el Repositorio](#1-clonar-el-repositorio)
   - [2. Instalar Paquetes Necesarios](#2-instalar-paquetes-necesarios)
   - [3. Instalar Ollama y el Modelo Llama 3](#3-instalar-ollama-y-el-modelo-llama-3)
-  - [4. Instalar ChromeDriver (Opcional)](#4-instalar-chromedriver-opcional)
-    - [a. Verificar la Versión de Google Chrome](#a-verificar-la-versión-de-google-chrome)
-    - [b. Descargar ChromeDriver](#b-descargar-chromedriver)
-    - [c. Configurar ChromeDriver](#c-configurar-chromedriver)
-  - [5. Instalar CUDA 11.6](#5-instalar-cuda-116)
+  - [4. Instalar CUDA 11.6](#5-instalar-cuda-116)
     - [a. Instalar PyTorch con Soporte CUDA](#a-instalar-pytorch-con-soporte-cuda)
     - [b. Verificar la Instalación de PyTorch y CUDA](#b-verificar-la-instalación-de-pytorch-y-cuda)
 - [Contribuciones](#contribuciones)
@@ -58,7 +54,7 @@ El sistema RAG consta de dos componentes principales:
 
 ## Requisitos Previos
 
-- **Python 3.x** instalado en su sistema.
+- **Python 3.11** instalado en su sistema.
 - **Google Chrome** instalado.
 - **Ollama** y el modelo **Llama 3** instalados. (Ver sección de instalación)
 - **CUDA 11.6** instalado si utiliza una GPU NVIDIA compatible.
@@ -112,70 +108,7 @@ ollama pull llama3
 
 Este comando descargará el modelo y lo preparará para su uso con Ollama.
 
-### 4. Instalar ChromeDriver (Opcional)
-
-**Nota:** Este paso es necesario **solo si** desea volver a crear el diccionario utilizando técnicas de web scraping con Selenium.
-
-#### a. Verificar la Versión de Google Chrome
-
-Es importante que la versión de ChromeDriver coincida con la versión de Google Chrome instalada en su sistema.
-
-- **En Windows:**
-  1. Abra Google Chrome.
-  2. Haga clic en el ícono de tres puntos verticales en la esquina superior derecha.
-  3. Vaya a **Ayuda** > **Información de Google Chrome**.
-  4. Anote el número de versión (por ejemplo, `117.0.5938.62`).
-
-- **En macOS:**
-  1. Abra Google Chrome.
-  2. En la barra de menú superior, haga clic en **Chrome** > **Acerca de Google Chrome**.
-  3. Anote el número de versión.
-
-- **En Linux:**
-  1. Abra Google Chrome.
-  2. Haga clic en el ícono de tres puntos verticales.
-  3. Vaya a **Ayuda** > **Acerca de Google Chrome**.
-  4. Anote el número de versión.
-
-#### b. Descargar ChromeDriver
-
-Visite el sitio oficial de descargas de ChromeDriver:
-
-[https://googlechromelabs.github.io/chrome-for-testing/](https://googlechromelabs.github.io/chrome-for-testing/)
-
-1. En la sección **Stable Releases**, busque la versión que coincida con su versión de Chrome.
-2. Descargue el archivo correspondiente a su sistema operativo:
-   - **Windows:** `chromedriver-win64.zip`
-   - **macOS (Intel):** `chromedriver-mac-x64.zip`
-   - **macOS (Apple Silicon):** `chromedriver-mac-arm64.zip`
-   - **Linux:** `chromedriver-linux64.zip`
-3. Extraiga el contenido del archivo ZIP descargado.
-
-#### c. Configurar ChromeDriver
-
-- **En Windows:**
-  1. Mueva `chromedriver.exe` a una carpeta de su elección, por ejemplo, `C:\webdrivers`.
-  2. Agregue la ruta de la carpeta a la variable de entorno `PATH`:
-     - Presione `Win + R`, escriba `sysdm.cpl` y presione Enter.
-     - Vaya a la pestaña **Opciones avanzadas** y haga clic en **Variables de entorno**.
-     - En **Variables del sistema**, seleccione `Path` y haga clic en **Editar**.
-     - Haga clic en **Nuevo** y agregue la ruta `C:\webdrivers`.
-     - Confirme todas las ventanas abiertas con **Aceptar**.
-
-- **En macOS/Linux:**
-  1. Mueva `chromedriver` a `/usr/local/bin/`:
-
-     ```bash
-     sudo mv chromedriver /usr/local/bin/
-     ```
-
-  2. Asegúrese de que el archivo sea ejecutable:
-
-     ```bash
-     sudo chmod +x /usr/local/bin/chromedriver
-     ```
-
-### 5. Instalar CUDA 11.6
+### 4. Instalar CUDA 11.6
 
 Si su sistema cuenta con una GPU NVIDIA compatible, puede instalar CUDA 11.6 para acelerar el procesamiento.
 
@@ -297,6 +230,8 @@ Si `CUDA Available` es `True`, significa que PyTorch está configurado correctam
 4. Empuje a la rama: `git push origin mi-nueva-funcionalidad`.
 5. Abra un Pull Request en GitHub.
 
-## Licencia
+## Derechos y Uso Académico
 
-Este proyecto está bajo la Licencia MIT. Consulte el archivo [LICENSE](LICENSE) para más detalles.
+Este proyecto ha sido desarrollado como parte de un trabajo académico para el Tec de Monterrey en el curso de "Proyecto Integrador" bajo la supervisión de Horacio Martínez Alfaro. Su uso está limitado exclusivamente a fines educativos y no se autoriza su explotación comercial ni su distribución fuera del ámbito académico sin el consentimiento expreso de los autores y la universidad.
+
+Cualquier referencia o reutilización de este trabajo deberá ser debidamente citada y acreditada a los autores originales. Para consultas o solicitudes de uso, por favor contactar con los autores a través de los canales oficiales de la universidad.
