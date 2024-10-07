@@ -1,6 +1,8 @@
 # Predicción de Código HTS de 6 Dígitos a partir de Lenguaje Natural
 
-Este proyecto tiene como objetivo predecir un código HTS (Harmonized Tariff Schedule) de 6 dígitos basándose en una entrada de lenguaje natural proporcionada por el usuario. Esto facilita la clasificación de productos en el comercio internacional.
+Este proyecto tiene como misión desarrollar un sistema avanzado de predicción del código HTS (Harmonized Tariff Schedule) de 6 dígitos, empleando técnicas de procesamiento de lenguaje natural (NLP) para analizar y comprender entradas textuales proporcionadas por el usuario. Aprovechando la riqueza semántica y la capacidad de inferencia de modelos de lenguaje de última generación, este sistema está diseñado para optimizar y automatizar el proceso de clasificación arancelaria de productos en el comercio internacional.
+
+Al permitir la interpretación inteligente de descripciones en lenguaje natural, esta solución no solo reduce la complejidad inherente a la clasificación de productos dentro de los marcos regulatorios globales, sino que también mejora la precisión y la eficiencia del proceso. Este enfoque innovador tiene el potencial de transformar la forma en que las empresas navegan por las complejidades del comercio internacional, reduciendo la incertidumbre asociada con los códigos HTS y facilitando el cumplimiento normativo con una precisión excepcional.
 
 ## Introducción
 
