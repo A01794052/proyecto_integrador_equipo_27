@@ -2,6 +2,41 @@
 
 Este proyecto tiene como objetivo predecir un código HTS (Harmonized Tariff Schedule) de 6 dígitos basándose en una entrada de lenguaje natural proporcionada por el usuario. Esto facilita la clasificación de productos en el comercio internacional.
 
+## Introducción
+
+Este proyecto implementa un sistema de **Recuperación Aumentada con Generación (RAG)**. RAG combina técnicas de **búsqueda basada en recuperación** y **generación de texto** mediante modelos de lenguaje natural. La idea principal es que el modelo de generación se apoya en información relevante recuperada de una base de conocimiento o documentos externos para generar respuestas más precisas y contextuales a las preguntas del usuario.
+
+## ¿Cómo funciona RAG?
+
+El sistema RAG consta de dos componentes principales:
+
+1. **Recuperador de información**: 
+   - Cuando se recibe una consulta, el sistema busca en una base de datos (puede ser una base de conocimientos, documentos, etc.) para recuperar los fragmentos más relevantes. Esta base se encuentra localmente en Chromadb, donde los documentos han sido previamente indexados. 
+   
+2. **Generador basado en un modelo de lenguaje**: 
+   - Una vez que se recuperan los fragmentos relevantes, estos se pasan al generador (como un modelo de lenguaje basado en Transformer, por ejemplo, GPT) que utiliza esa información para generar una respuesta coherente y precisa a la consulta inicial.
+
+### Pasos de procesamiento:
+
+1. **Input del usuario**: El sistema recibe una consulta en lenguaje natural.
+2. **Recuperación de documentos**: Se buscan los documentos o fragmentos más relevantes a la consulta.
+3. **Incorporación de la información recuperada**: La información obtenida se introduce al modelo de lenguaje.
+4. **Generación de respuesta**: El modelo genera una respuesta final que integra tanto el contexto de la consulta como la información recuperada.
+5. **Devolución de la respuesta al usuario**.
+
+## Estructura del Proyecto
+
+```
+/RAG_Project
+│
+├── /data/                # Contiene los documentos que serán indexados para la recuperación
+├── /vetor_db/            # Contiene el o los Index creados a partir del data
+├── /retriever/           # Código del recuperador (indexación y búsqueda)
+├── /scripts/             # Scripts de apoyo diversos (web_scrap, index_creation, etc.)
+├── README.md             # Este archivo
+└── requirements.txt      # Dependencias del proyecto
+```
+
 ## Tabla de Contenidos
 
 - [Requisitos Previos](#requisitos-previos)
