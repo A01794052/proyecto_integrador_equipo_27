@@ -4,6 +4,8 @@ Este proyecto tiene como misión desarrollar un sistema avanzado de predicción 
 
 Al permitir la interpretación inteligente de descripciones en lenguaje natural, esta solución no solo reduce la complejidad inherente a la clasificación de productos dentro de los marcos regulatorios globales, sino que también mejora la precisión y la eficiencia del proceso. Este enfoque innovador tiene el potencial de transformar la forma en que las empresas navegan por las complejidades del comercio internacional, reduciendo la incertidumbre asociada con los códigos HTS y facilitando el cumplimiento normativo con una precisión excepcional.
 
+![RAG-Index creation](https://github.com/user-attachments/assets/d00770fd-9688-4319-b037-b2e592f85758)
+
 ## Introducción
 
 Este proyecto implementa un sistema de **Recuperación Aumentada con Generación (RAG)**. RAG combina técnicas de **búsqueda basada en recuperación** y **generación de texto** mediante modelos de lenguaje natural. La idea principal es que el modelo de generación se apoya en información relevante recuperada de una base de conocimiento o documentos externos para generar respuestas más precisas y contextuales a las preguntas del usuario.
@@ -24,7 +26,7 @@ El sistema RAG consta de dos componentes principales:
 2. **Recuperación de documentos**: Se buscan los documentos o fragmentos más relevantes a la consulta.
 3. **Incorporación de la información recuperada**: La información obtenida se introduce al modelo de lenguaje.
 4. **Generación de respuesta**: El modelo genera una respuesta final que integra tanto el contexto de la consulta como la información recuperada.
-5. **Devolución de la respuesta al usuario**.
+5. **Devolución de la respuesta al usuario**: Codigo HTS a 6 digitos (Capitulo, parte y subparte) o bien, 3 posibles codigos a ser utilizados en caso de recibir una entrada muy ambigüa.
 
 ## Estructura del Proyecto
 
