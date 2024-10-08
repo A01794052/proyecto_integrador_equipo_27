@@ -32,9 +32,9 @@ El sistema RAG consta de dos componentes principales:
 /RAG_Project
 │
 ├── /data/                # Contiene los documentos que serán indexados para la recuperación
-├── /vetor_db/            # Contiene el o los Index creados a partir del data
-├── /retriever/           # Código del recuperador (indexación y búsqueda)
-├── /scripts/             # Scripts de apoyo diversos (web_scrap, index_creation, etc.)
+├── /index/               # Contiene el o los Index creados a partir del data
+├── /retriever/           # Código del recuperador (búsqueda)
+├── /scripts/             # Scripts de apoyo diversos (web_scrap, indexación, etc.)
 ├── README.md             # Este archivo
 └── requirements.txt      # Dependencias del proyecto
 ```
