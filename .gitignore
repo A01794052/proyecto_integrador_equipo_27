@@ -2,3 +2,5 @@
 /.venv
 /WebScrap_PDFs
 /Avance_2/VectorDB
+*.env
+*.bin
