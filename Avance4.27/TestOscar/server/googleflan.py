@@ -17,6 +17,7 @@ model = model.to(device)
 def generate():
     data = request.json
     prompt = data.get('prompt', '')
+    print(prompt)
     max_length = data.get('max_length', 100)  # Default max_length
 
     # Tokenize and generate output
