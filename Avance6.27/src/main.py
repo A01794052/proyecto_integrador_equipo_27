@@ -10,7 +10,6 @@ import warnings
 from rich import print
 import torch
 from os.path import dirname, abspath
-import argparse
 
 # Suppress all warnings
 warnings.filterwarnings("ignore")
@@ -44,12 +43,6 @@ def process_with_AI(query):
     return translated_to_english
 
 if __name__ == "__main__":
-    # Argument parsing
-    parser = argparse.ArgumentParser(description="Freight Inspector Query Processor")
-    parser.add_argument("query", type=str, help="The query to be processed for HS Code retrieval")
-    args = parser.parse_args()
-    query = args.query
-
     print(f"CUDA Available: {torch.cuda.is_available()}")
     if torch.cuda.is_available():
         print(f"Device Name: {torch.cuda.get_device_name(0)}")
@@ -89,10 +82,10 @@ if __name__ == "__main__":
 
     For example, if the source document mentions 'Potato starch' with 'source': '1108.13', your answer must be '1108.13'.
 
-    Avoid responding with any other text. Respond only with 1 HS code, the one with better score from the retriever
-    
-    If for some reason, you can't find any match, suggest 3 possible matches with their correspondnig descriptions.
-    
+    Avoid responding with any other text. Respond only with 1 HS code, the one with better score from the retriever.
+
+    If for some reason, you can't find any match, suggest 3 possible matches with their corresponnding descriptions.
+
     context:
     {summaries}
 
@@ -127,7 +120,16 @@ if __name__ == "__main__":
         },
     )
 
-    # Run prediction
-    result = llm_chain({"question": process_with_AI(query), "summaries": context})
-    print(f"[bold yellow]The requested item's description CLEANED to search HTS code is:[/bold yellow]\n{process_with_AI(query)}")
-    print(f"[bold green]The response of the LLM is:[/bold green]\n{result['answer']}")
+    # Start interactive console
+    print("Type your query to retrieve an HS Code (type 'exit' to quit):")
+    while True:
+        query = input("Enter query: ")
+        if query.lower() == "exit":
+            print("Exiting console.")
+            break
+
+        # Run prediction
+        processed_query = process_with_AI(query)
+        result = llm_chain({"question": processed_query, "summaries": context})
+        print(f"[bold yellow]The requested item's description CLEANED to search HTS code is:[/bold yellow]\n{processed_query}")
+        print(f"[bold green]The response of the LLM is:[/bold green]\n{result['answer']}")
